@@ -14,32 +14,7 @@ function mungeLocation(location) {
 
 
 // /////////////////////
-// function mungeWeather(data) {
-//   const returnArray = 
 
-//     {
-//       forecast: '',
-//       datetime: 0
-
-//     }
-//   ;
-
-//   for(let i = 0; i < data.length; i++) {
-//     returnArray[i].forecast = data[i].weather.description;
-//     returnArray[i].time = data[i].datetime;
-//   }
-//   return returnArray;
-
-//   // console.log('we are here' + data);
-//   // console.log('data[0]: ' + data[0]);
-
-//   return {
-//     forecast: data[0].weather.description,
-//     time: data[0].datetime
-    
-//   }; 
-// }
- 
 function mungeWeather(location) {
   
   return location.data.map(data => {

@@ -5,7 +5,19 @@ function mungeLocation(location) {
     longitude: location[0].lon
   }; 
 }
-  
+function mungeWeather(weather) {
+  return {
+    forecast: weather[0].weather.description,
+    time: weather.dateTime
+  }; 
+} 
+
+
+
+
+
+
 module.exports = {
-  mungeLocation
+  mungeLocation,
+  mungeWeather
 };

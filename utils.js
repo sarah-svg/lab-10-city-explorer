@@ -15,9 +15,9 @@ function mungeWeather(weather) {
     };
   }).slice(0, 8);
 }
+function mungeTrail(trails) {
 
-function mungeTrail(trail) {
-  return trail.trails.map(item => {
+  return trails.trails.map(item => {
     return {
       name: item.name,
       location: item.location,

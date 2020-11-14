@@ -1,58 +1,50 @@
 
 function mungeLocation(location) {
-  console.log(location);
-  console.log(location[0].display_name);
   return {
-
     formatted_query: location[0].display_name,
     latitude: location[0].lat,
     longitude: location[0].lon
   };
 }
 
-
-function mungeWeather(location) {
-
-  return location.data.map(data => {
+function mungeWeather(weather) {
+  return weather.data.map(item => {
     return {
-      forecast: data.weather.description,
-      time: data.datetime,
+      forecast: item.weather.description,
+      time: item.datetime
     };
   }).slice(0, 8);
-
 }
 
-
-
-
-
-function mungeTrail(trailObj) {
-  const returnArray = trailObj.trails.map(trail => {
+function mungeTrail(trail) {
+  return trail.trails.map(item => {
     return {
-      name: trail.name,
-      location: trail.location,
-      length: trail.length,
-      stars: trail.stars,
-      star_votes: trail.starVotes,
-      summary: trail.summary,
-      trail_url: trail.url,
-      conditions: trail.conditionStatus,
-      condition_date: trail.conditionDetails,
-      condition_time: trail.conditionDate,
+      name: item.name,
+      location: item.location,
+      length: item.length,
+      stars: item.stars,
+      star_votes: item.starVotes,
+      summary: item.summary,
+      trail_url: item.url,
+      conditions: item.conditionDetails,
+      condition_date: item.conditionDate.split(' ')[0],
+      condition_time: item.conditionDate.split(' ')[1]
     };
-  });
-
-  return returnArray.slice(0, 11);
+  }).slice(0, 10);
 }
 
-/////////////////////
+function mungeYelp(review) {
+  return review.businesses.map(item => {
+    return {
+      name: item.name,
+      image_url: item.image_url,
+      price: item.price,
+      rating: item.rating,
+      url: item.url
+    };
+  }).slice(0, 20);
+}
 
 
 
-module.exports = {
-  mungeLocation,
-  mungeWeather,
-  mungeTrail
-
-};
-
+module.exports = { mungeLocation, mungeWeather, mungeTrail, mungeYelp };

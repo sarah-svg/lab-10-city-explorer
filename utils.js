@@ -29,23 +29,21 @@ function mungeYelp(yelp) {
     };
   }).slice(0, 20);
 }
-function mungeTrail(hike) {
-  let hikes = hike.trails.map((item) => {
+function mungeTrail(trail) {
+  return trail.trails.map(item => {
     return {
       name: item.name,
       location: item.location,
       length: item.length,
-      stars: item.stars, 
+      stars: item.stars,
       star_votes: item.starVotes,
       summary: item.summary,
       trail_url: item.url,
-      conditions: item.conditionStatus,
+      conditions: item.conditionDetails,
       condition_date: item.conditionDate.split(' ')[0],
-      condition_time: item.conditionDate.split(' ')[1],
+      condition_time: item.conditionDate.split(' ')[1]
     };
-  });
-
-  return hikes.slice(0, 6);
+  }).slice(0, 10);
 }
 
 function mungeReviews(review) {

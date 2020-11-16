@@ -29,33 +29,37 @@ function mungeYelp(yelp) {
     };
   }).slice(0, 20);
 }
-function mungeTrail(trail) {
-  return trail.trails.map(item => {
+function mungeReviews(yelpData) {
+
+  return yelpData.businesses.map(oneBusiness => {
+
     return {
-      name: item.name,
-      location: item.location,
-      length: item.length,
-      stars: item.stars,
-      star_votes: item.starVotes,
-      summary: item.summary,
-      trail_url: item.url,
-      conditions: item.conditionDetails,
-      condition_date: item.conditionDate.split(' ')[0],
-      condition_time: item.conditionDate.split(' ')[1]
+      name: oneBusiness.name,
+      image_url: oneBusiness.image_url,
+      price: oneBusiness.price,
+      rating: oneBusiness.rating,
+      url: oneBusiness.url
     };
-  }).slice(0, 10);
+  });
 }
 
-function mungeReviews(review) {
-  return review.businesses.map(item => {
+function mungeTrail(trailsData) {
+
+  return trailsData.trails.map(oneTrail => {
+
     return {
-      name: item.name,
-      image_url: item.image_url,
-      price: item.price,
-      rating: item.rating,
-      url: item.url
+      name: oneTrail.name,
+      location: oneTrail.location,
+      length: oneTrail.length,
+      stars: oneTrail.stars,
+      star_votes: oneTrail.starVotes,
+      summary: oneTrail.summary,
+      trail_url: oneTrail.url,
+      conditions: oneTrail.conditionStatus,
+      condition_date: oneTrail.conditionDate,
+      condition_time: 'n/a'
     };
-  }).slice(0, 20);
+  });
 }
 
 
